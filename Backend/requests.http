@@ -1,0 +1,68 @@
+
+### работа с файлами. добавить просмотр всех файлов для admin
+GET http://127.0.0.1:8000/api/file/
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+###
+GET http://127.0.0.1:8000/file/107/download/
+Content-Type: application/json
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+
+###
+PUT  http://127.0.0.1:8000/api/file/107/
+Content-Type:  application/json
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+ {
+
+    "original_name": "new name"
+
+  }
+
+###
+
+POST http://127.0.0.1:8000/file/
+Content-Type: application/json
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+  { 
+
+    "file": "",
+    "comment": "Phototest 4 comment",
+    "namefile": "Phototest 4"
+}
+
+###
+
+DELETE  http://127.0.0.1:8000/api/file/108/
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+### Получение списка пользовател
+GET http://127.0.0.1:8000/api/ad/
+Authorization: Token 03a0871b038ceb3c7875bad34511500d5c273a32
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type:  application/json
+
+{
+    "username": "te",
+    "email": "testuser@example.com",
+   
+}
+
+###
+POST  http://127.0.0.1:8000/logout/
+Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+
+###
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username": "testuser22",
+    "password": "11111111"
+}
+
+
