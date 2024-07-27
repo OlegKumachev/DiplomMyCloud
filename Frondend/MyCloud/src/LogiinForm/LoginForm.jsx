@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ onLogin }) => {
+export const LoginForm = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (!username || !password) {
-            setError('Введите имя пользователя и пароль.');
-            return;
-        }
-
-        setError('');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
         try {
-            // Здесь можно сделать запрос к вашему API для аутентификации
-            const response = await fetch('http://127.0.0.1:8000/login', {
+            const response = await fetch('http://127.0.0.1:8000/api/token/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,41 +18,37 @@ const LoginForm = ({ onLogin }) => {
             });
 
             if (!response.ok) {
-                throw new Error('Неправильное имя пользователя или пароль.');
+                throw new Error('Failed to login');
             }
 
             const data = await response.json();
-            onLogin(data.token); // Сохранение токена аутентификации или других данных
-
-        } catch (err) {
-            setError(err.message);
+            onLogin(data.access);  // Передаем токен в родительский компонент
+        } catch (error) {
+            setError(error.message);
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="username">Имя пользователя</label>
+                <label>Username:</label>
                 <input
                     type="text"
-                    id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="password">Пароль</label>
+                <label>Password:</label>
                 <input
                     type="password"
-                    id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            <button type="submit">Войти</button>
+            <button type="submit">Login</button>
+            {error && <p>{error}</p>}
         </form>
     );
 };
 
-export default LoginForm;

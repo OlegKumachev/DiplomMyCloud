@@ -3,7 +3,6 @@ from .models import File
 
 
 class FileSerializers(serializers.ModelSerializer):
-    # download_url = serializers.SerializerMethodField()
     class Meta:
         model = File
         fields = ['id', 'user_id', 'file', 'comment', 'original_name']

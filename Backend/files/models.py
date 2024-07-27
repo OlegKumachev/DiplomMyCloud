@@ -22,3 +22,15 @@ class File(models.Model):
 
     def __str__(self):
         return self.original_name
+
+    def save(self, *args, **kwargs):
+
+        file_extension = os.path.splitext(self.file.name)[1]
+        
+        if not self.original_name:
+            self.original_name = os.path.basename(self.file.name)
+        else:
+            if not self.original_name.endswith(file_extension):
+                self.original_name += file_extension
+
+        super().save(*args, **kwargs)

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import LoginForm from '../../MyCloud/src/LogiinForm/LoginForm';
+import { LoginForm } from '../LogiinForm/LoginForm';
 
 const LoginPage = () => {
     const [token, setToken] = useState(null);
 
     const handleLogin = (token) => {
         setToken(token);
-        // Дополнительные действия после успешного входа, например, перенаправление пользователя
-        window.location.href = '/dashboard';
+        localStorage.setItem('token', token);
+        alert(`Token received: ${token}`);
+        window.location.href = '/files';  // Переход на страницу с файлами
     };
 
     return (

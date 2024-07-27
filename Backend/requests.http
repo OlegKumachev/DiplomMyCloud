@@ -1,22 +1,26 @@
 
+
 ### работа с файлами. добавить просмотр всех файлов для admin
 GET http://127.0.0.1:8000/api/file/
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMDE0NTUzLCJpYXQiOjE3MjIwMTA5NTMsImp0aSI6Ijg1MzRkMzk4OGVmZjQ2NDU4YjAyZTRjOGJiYTBiNzJlIiwidXNlcl9pZCI6MX0.edkRCsmHFFYMhdfqsAbzlZnYmj0ZOLclVCwP-NJmM2o
 
 ###
-GET http://127.0.0.1:8000/file/107/download/
+GET http://127.0.0.1:8000/api/file/2/
 Content-Type: application/json
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODM5MTYwLCJpYXQiOjE3MjE4MzU1NjAsImp0aSI6IjliOTQzZDNjYzM4YjQ0MTA5YmYxOTA2NTllNDYyMzljIiwidXNlcl9pZCI6MX0.er31HT81PT7Rggfs0i6GI3w01La6mykwftqHUZXqEWs
 
 ###
-PUT  http://127.0.0.1:8000/api/file/107/
+GET http://127.0.0.1:8000/api/file/2/download/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODQwNzYzLCJpYXQiOjE3MjE4MzcxNjMsImp0aSI6Ijc4M2IwMGE1YWY1MjRjNzM4NGExNWE2YThjZTAzZjA0IiwidXNlcl9pZCI6MX0.s1ByfgsCrRZKm_oOdmMZvrl2E7sA8kdLXa1j2Jr3bmw
+
+###
+PUT  http://127.0.0.1:8000/api/file/2/
 Content-Type:  application/json
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODMwODI3LCJpYXQiOjE3MjE4MjcyMjcsImp0aSI6IjNmMmFhM2ExMDkzZTRlMTdhYjE0NjRlZGYyODAyZjEzIiwidXNlcl9pZCI6MX0.QzUNZ_MQmkwcAJy0tVX6kKi8d89Mck9gaBU8xMEtfv4
 
  {
 
-    "original_name": "new name"
+    "original_name": "старое име"
 
   }
 
@@ -24,7 +28,7 @@ Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
 
 POST http://127.0.0.1:8000/file/
 Content-Type: application/json
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+Authorization: Token 64fea4167eee65bf02edb98475fd8cb1773ccdd5
 
   { 
 
@@ -35,34 +39,39 @@ Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
 
 ###
 
-DELETE  http://127.0.0.1:8000/api/file/108/
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+DELETE  http://127.0.0.1:8000/api/file/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODMwMjI4LCJpYXQiOjE3MjE4MjY2MjgsImp0aSI6ImMzMjZhYWMxMmFmYzQwODRiNjA2ZWRlNWQ3ZWI3OGZkIiwidXNlcl9pZCI6MX0.suCuNne1LpqI20e5xxl5eFoAtc3JYyBMssBCd75PWl4
+
 
 ### Получение списка пользовател
 GET http://127.0.0.1:8000/api/ad/
-Authorization: Token 03a0871b038ceb3c7875bad34511500d5c273a32
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxNzU2NDM1LCJpYXQiOjE3MjE3NTI4MzUsImp0aSI6ImE3YTg4ODAxZGRiMjQwYTBiZjhkZTU5ODJlMDVmMzdhIiwidXNlcl9pZCI6MX0.o_YXfdVcgUr_tBqeZVLPvFiBNvix3c648MqV1hkAH6o
 
 ###
 POST http://127.0.0.1:8000/register/
 Content-Type:  application/json
 
 {
-    "username": "te",
+    "username": "testuser1",
     "email": "testuser@example.com",
-   
+    "password": "yourpassword1"
 }
+
 
 ###
 POST  http://127.0.0.1:8000/logout/
-Authorization: Token 04404d470473a0c484c61752539e70e569cc9428
+Authorization: Token 64fea4167eee65bf02edb98475fd8cb1773ccdd5
 
 ###
 POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
 {
-    "username": "testuser22",
-    "password": "11111111"
+    "username": "testuser",
+    "password": "yourpassword"
 }
 
+###
+GET http://127.0.0.1:8000/127.0.0.1:8000/api/file/generate-public-link/12/
 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMDE0NTUzLCJpYXQiOjE3MjIwMTA5NTMsImp0aSI6Ijg1MzRkMzk4OGVmZjQ2NDU4YjAyZTRjOGJiYTBiNzJlIiwidXNlcl9pZCI6MX0.edkRCsmHFFYMhdfqsAbzlZnYmj0ZOLclVCwP-NJmM2o
