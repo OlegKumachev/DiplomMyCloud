@@ -2,59 +2,36 @@
 
 ### работа с файлами. добавить просмотр всех файлов для admin
 GET http://127.0.0.1:8000/api/file/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMDE0NTUzLCJpYXQiOjE3MjIwMTA5NTMsImp0aSI6Ijg1MzRkMzk4OGVmZjQ2NDU4YjAyZTRjOGJiYTBiNzJlIiwidXNlcl9pZCI6MX0.edkRCsmHFFYMhdfqsAbzlZnYmj0ZOLclVCwP-NJmM2o
-
-###
-GET http://127.0.0.1:8000/api/file/2/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODM5MTYwLCJpYXQiOjE3MjE4MzU1NjAsImp0aSI6IjliOTQzZDNjYzM4YjQ0MTA5YmYxOTA2NTllNDYyMzljIiwidXNlcl9pZCI6MX0.er31HT81PT7Rggfs0i6GI3w01La6mykwftqHUZXqEWs
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMzY2ODk5LCJpYXQiOjE3MjIzNjMyOTksImp0aSI6IjkwMmNhZjhkNDkyYjQ4NDNhZjNjYmQwMjJiNjBiMzc0IiwidXNlcl9pZCI6MX0.fYgxIOIOL3Xz83ljnebuQUVcyZYHExw-EQvDNWyu940	
+
+
 
 ###
+GET http://127.0.0.1:8000/download/None_Screenshot_2.jpg"
+
+
+###
+GET http://127.0.0.1:8000/api/file/18/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMzY2ODk5LCJpYXQiOjE3MjIzNjMyOTksImp0aSI6IjkwMmNhZjhkNDkyYjQ4NDNhZjNjYmQwMjJiNjBiMzc0IiwidXNlcl9pZCI6MX0.fYgxIOIOL3Xz83ljnebuQUVcyZYHExw-EQvDNWyu940	
+
 GET http://127.0.0.1:8000/api/file/2/download/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODQwNzYzLCJpYXQiOjE3MjE4MzcxNjMsImp0aSI6Ijc4M2IwMGE1YWY1MjRjNzM4NGExNWE2YThjZTAzZjA0IiwidXNlcl9pZCI6MX0.s1ByfgsCrRZKm_oOdmMZvrl2E7sA8kdLXa1j2Jr3bmw
-
-###
-PUT  http://127.0.0.1:8000/api/file/2/
-Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODMwODI3LCJpYXQiOjE3MjE4MjcyMjcsImp0aSI6IjNmMmFhM2ExMDkzZTRlMTdhYjE0NjRlZGYyODAyZjEzIiwidXNlcl9pZCI6MX0.QzUNZ_MQmkwcAJy0tVX6kKi8d89Mck9gaBU8xMEtfv4
-
- {
-
-    "original_name": "старое име"
-
-  }
-
-###
-
-POST http://127.0.0.1:8000/file/
-Content-Type: application/json
-Authorization: Token 64fea4167eee65bf02edb98475fd8cb1773ccdd5
-
-  { 
-
-    "file": "",
-    "comment": "Phototest 4 comment",
-    "namefile": "Phototest 4"
-}
-
-###
-
-DELETE  http://127.0.0.1:8000/api/file/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODMwMjI4LCJpYXQiOjE3MjE4MjY2MjgsImp0aSI6ImMzMjZhYWMxMmFmYzQwODRiNjA2ZWRlNWQ3ZWI3OGZkIiwidXNlcl9pZCI6MX0.suCuNne1LpqI20e5xxl5eFoAtc3JYyBMssBCd75PWl4
+Authorization: Bearer 
 
 
 ### Получение списка пользовател
 GET http://127.0.0.1:8000/api/ad/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxNzU2NDM1LCJpYXQiOjE3MjE3NTI4MzUsImp0aSI6ImE3YTg4ODAxZGRiMjQwYTBiZjhkZTU5ODJlMDVmMzdhIiwidXNlcl9pZCI6MX0.o_YXfdVcgUr_tBqeZVLPvFiBNvix3c648MqV1hkAH6o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNTg2NDI4LCJpYXQiOjE3MjI1ODI4MjgsImp0aSI6ImUzYTI3MTA2MjY4ZTQ0M2Q4MGRmNGRmNGE3NjhkYzBmIiwidXNlcl9pZCI6MX0.e72M7TtbL_-rbPTmp8tKhGdLYzTKE33gwioWVXn_RIE
 
 ###
 POST http://127.0.0.1:8000/register/
 Content-Type:  application/json
 
 {
-    "username": "testuser1",
+    "username": "oleg",
     "email": "testuser@example.com",
-    "password": "yourpassword1"
+    "password": "1234"
 }
 
 
@@ -67,11 +44,12 @@ POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
 {
-    "username": "testuser",
-    "password": "yourpassword"
+    "username": "notadmin",
+    "password": "00000000"
 }
 
 ###
-GET http://127.0.0.1:8000/127.0.0.1:8000/api/file/generate-public-link/12/
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyMDE0NTUzLCJpYXQiOjE3MjIwMTA5NTMsImp0aSI6Ijg1MzRkMzk4OGVmZjQ2NDU4YjAyZTRjOGJiYTBiNzJlIiwidXNlcl9pZCI6MX0.edkRCsmHFFYMhdfqsAbzlZnYmj0ZOLclVCwP-NJmM2o
+GET http://127.0.0.1:8000/api/ad/me/
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNTg3MjAyLCJpYXQiOjE3MjI1ODM2MDIsImp0aSI6ImQxZTdjYTZkYTUxYzQwMGY5YzgzMDUyYmZmMzk5ZWYzIiwidXNlcl9pZCI6MX0.XP0q4wwoKJAEUeHy8Kaqi4-XTJmdg8dQXyIyCIV6vLc

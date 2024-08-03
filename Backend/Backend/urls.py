@@ -11,10 +11,12 @@ from users.views import MyUserViewSet, RegisterView, LogoutView, LoginView
 router = SimpleRouter()
 
 router.register(r'file', FileViewSet)
-router.register(r'ad', MyUserViewSet, basename='myuser')
+router.register(r'ad', MyUserViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('api/', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
@@ -22,7 +24,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('api/file/<int:file_id>/generate-public-link/', FileViewSet.as_view({'get': 'generate_public_link'}), name='generate-public-link'),
-    path('download/<path:file_path>/', FileViewSet.as_view({'get': 'file_download'}), name='file_download'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

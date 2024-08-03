@@ -32,5 +32,14 @@ class File(models.Model):
         else:
             if not self.original_name.endswith(file_extension):
                 self.original_name += file_extension
-
+        if not self.special_url:
+            self.special_url = f"http://127.0.0.1:8000/download/{self.pk}_{self.original_name}"
+        
         super().save(*args, **kwargs)
+
+        if self.file:
+            self.size_n = self.file.size
+        
+
+        super().save(update_fields=['size_n'])
+

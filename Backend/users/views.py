@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from rest_framework.decorators import action
 from .models import MyUser
 from .serializers import UserSerializers, RegisterSerializer, LoginSerializer
 
@@ -23,6 +23,14 @@ class MyUserViewSet(viewsets.ModelViewSet):
             return MyUser.objects.all()
         logger.warning(f'User {self.request.user} attempted to access user list')
         raise PermissionDenied("Only superusers can view the user list.")
+
+    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    def me(self, request):
+        """
+        Returns the current authenticated user's data
+        """
+        serializer = self.get_serializer(request.user)
+        return Response(serializer.data)
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -72,4 +80,4 @@ class LogoutView(APIView):
             return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
         except Exception as e:
             logger.error(f'Logout error: {e}')
-            return Response({'error': 'An error occurred during logout'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'An error occurred during logout'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR) 

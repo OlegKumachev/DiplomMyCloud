@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from Backend import settings
 from .manager import CustomUserManager
+ 
 
 class MyUser(AbstractUser):
     username = models.CharField(max_length=100, unique=True, verbose_name='Login')
@@ -10,6 +11,9 @@ class MyUser(AbstractUser):
     storage_path = models.URLField(blank=True)
     folder_name = models.CharField(max_length=255, blank=True)
     objects = CustomUserManager()
+    total_size = models.BigIntegerField(default= 0)
+    
+   
 
     def save(self, *args, **kwargs):
         created = not self.pk
@@ -19,8 +23,8 @@ class MyUser(AbstractUser):
             full_user_directory = os.path.join(settings.MEDIA_ROOT, user_directory)
             os.makedirs(full_user_directory, exist_ok=True)
             self.storage_path = user_directory
-            super().save(update_fields=['storage_path'])
 
+    
     def __str__(self):
         return self.username
 

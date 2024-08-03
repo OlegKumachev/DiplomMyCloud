@@ -5,7 +5,7 @@ from .models import File
 class FileSerializers(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = ['id', 'user_id', 'file', 'comment', 'original_name']
+        fields = ['id', 'user_id', 'file', 'comment', 'original_name', 'size_n']
         read_only_fields = ['user_id']
 
     def update(self, instance, validated_data):

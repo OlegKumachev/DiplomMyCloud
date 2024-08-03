@@ -1,45 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import FileUpload from '../components/FileUpload/FileUpload';
 import { useNavigate } from 'react-router-dom';
-import  DeleteFileButton from '../components/DeleteFile/DeleteFile'
 
-export const FilesListPage = () => {
-    const [files, setFiles] = useState([]);
+export const AdminUsersList = () => {
+    const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchFiles = async () => {
+        const fetchUsers = async () => {
             const token = localStorage.getItem('token');
             if (!token) {
                 setError('Unauthorized');
+                navigate('/login'); // Перенаправляем на страницу входа
                 return;
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/file/', {
+                const response = await fetch('http://127.0.0.1:8000/api/ad/', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch files');
+                    throw new Error('Failed to fetch users');
                 }
 
                 const data = await response.json();
-                setFiles(data);
+                setUsers(data);
             } catch (err) {
                 setError(err.message);
             }
         };
 
-        fetchFiles();
-    }, []);
-
-    const handleDelete = (fileId) => {
-        setFiles(files.filter(file => file.id !== fileId));
-    };
+        fetchUsers();
+    }, [navigate]);
 
     if (error) {
         return <div>{error}</div>;
@@ -47,13 +42,12 @@ export const FilesListPage = () => {
 
     return (
         <div>
-            <h1>Files</h1>
-            <FileUpload />
+            <h1>Users List</h1>
             <ul>
-                {files.map(file => (
-                    <li key={file.id}>
-                        <a onClick={() => navigate(`/file/${file.id}`)}>{file.original_name}, {file.size_n}</a>
-                        <DeleteFileButton fileId={file.id} onDelete={handleDelete} />
+                {users.map(user => (
+                    <li key={user.id}>
+                        <a onClick={() => navigate(`/user/${user.id}`)}>{user.username}, </a> <div>ADMin {user.is_superuser ? 'Yes' : 'No'}</div>
+             
                     </li>
                 ))}
             </ul>

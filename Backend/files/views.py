@@ -9,6 +9,8 @@ from django.http import HttpResponse, FileResponse
 from .serializers import FileSerializers
 import os
 from django.utils import timezone
+from django.utils.decorators import method_decorator
+from django.views.decorators.http import require_GET
 
 logger = logging.getLogger('main')
 
@@ -54,16 +56,4 @@ class FileViewSet(ModelViewSet):
         except Exception as e:
             logger.error(f'Ошибка скачивания файла для {self.request.user}: {e}')
             return Response({'error': 'Failed to download file.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-    def generate_public_link(request, file_id):
-        file = get_object_or_404(File, id=file_id)
-        if not file.special_url:
-            file.special_url = request.build_absolute_uri(f'/media/{file.file.name}')
-            file.save()
-        return JsonResponse({'public_link': file.special_url})
 
-    def file_download(request, file_path):
-        file = get_object_or_404(File, file=file_path)
-        response = FileResponse(file.file.open(), content_type='application/octet-stream')
-        response['Content-Disposition'] = f'attachment; filename="{file.original_name}"'
-        return response

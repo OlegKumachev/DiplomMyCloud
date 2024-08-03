@@ -95,7 +95,7 @@ export const FilePage = () => {
     return (
         <div>
             <h1>{file.original_name}</h1>
-            <button onClick={handleDownload}>Download {file.original_name}</button>
+            <button onClick={handleDownload}>Download {file.original_name}, {file.size_n}</button>
 
             <UpdateFile fileId={file.id} onUpdate={handleUpdate} />
             <DeleteFileButton fileId={file.id} onDelete={handleDelete} />
