@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FileUpload from '../components/FileUpload/FileUpload';
 import { useNavigate } from 'react-router-dom';
 import  DeleteFileButton from '../components/DeleteFile/DeleteFile'
+import humanize from 'humanize-plus';
 
 export const FilesListPage = () => {
     const [files, setFiles] = useState([]);
@@ -52,7 +53,7 @@ export const FilesListPage = () => {
             <ul>
                 {files.map(file => (
                     <li key={file.id}>
-                        <a onClick={() => navigate(`/file/${file.id}`)}>{file.original_name}, {file.size_n}</a>
+                        <a onClick={() => navigate(`/file/${file.id}`)}>{file.original_name}, {humanize.filesize(file.size_n)}</a>
                         <DeleteFileButton fileId={file.id} onDelete={handleDelete} />
                     </li>
                 ))}

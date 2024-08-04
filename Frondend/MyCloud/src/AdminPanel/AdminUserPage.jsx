@@ -47,7 +47,7 @@ export const AdminUserPage = () => {
         <div>
             <h1>Пользователь</h1>
             <h2>{userData.username}</h2>
-            <div>{userData.is_superuser ? 'Yes' : 'No'}</div>
+        
         </div>
     );
 };

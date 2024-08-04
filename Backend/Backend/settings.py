@@ -67,6 +67,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

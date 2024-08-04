@@ -1,6 +1,7 @@
 import os
 from uuid import uuid4
 from django.db import models
+from humanize import naturalsize
 
 from users.models import MyUser
 
@@ -14,7 +15,6 @@ class File(models.Model):
     unique_name = models.CharField(unique=True, max_length=100, default=uuid4)
     file = models.FileField(blank=True, upload_to=user_directory_path)
     size_n = models.BigIntegerField(blank=True, null=True)
-    urlpath = models.URLField(blank=True)
     special_url = models.URLField(blank=True)
     comment = models.TextField(blank=True)
     data_created = models.DateTimeField(auto_now_add=True)
@@ -39,7 +39,23 @@ class File(models.Model):
 
         if self.file:
             self.size_n = self.file.size
-        
-
+    
         super().save(update_fields=['size_n'])
+    
+        if self.user:
+            self.user.update_total_size()
+            self.user.save()
+    def delete(self, *args, **kwargs):
+        storage, path = self.file.storage, self.file.path
+        user = self.user  # Сохраните ссылку на пользователя перед удалением файла
+        super().delete(*args, **kwargs)
+        storage.delete(path)
+
+    # Обновите total_size пользователя
+        if user:
+            user.update_total_size()
+            user.save(update_fields=['total_size'])
+
+        
+        super().delete(*args, **kwargs)
 

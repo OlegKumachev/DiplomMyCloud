@@ -30,18 +30,23 @@ class FileViewSet(ModelViewSet):
 
     def get_queryset(self):
         try:
-            queryset = File.objects.filter(user=self.request.user)
-            logger.info(f'Запрошены файлы для {self.request.user}')
+            if self.request.user.is_superuser:
+                queryset = File.objects.all()
+                logger.info(f'Запрошены все файлы для {self.request.user}')
+            else:
+                queryset = File.objects.filter(user=self.request.user)
+                logger.info(f'Запрошены файлы для {self.request.user}')
             return queryset
         except Exception as e:
             logger.error(f'Ошибка получения файлов для {self.request.user}: {e}')
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+    
     @action(detail=True, methods=['get'], url_path='download')
     def download_file(self, request, pk=None):
         try:
             file_instance = self.get_object()
-            if file_instance.user != request.user:
+            if not (file_instance.user == request.user or request.user.is_superuser):
                 return Response({'error': 'You do not have permission to access this file.'}, status=status.HTTP_403_FORBIDDEN)
             
             file_path = file_instance.file.path
