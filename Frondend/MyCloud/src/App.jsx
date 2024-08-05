@@ -8,6 +8,7 @@ import { FilePage } from './FilePage/FilePage'
 import AdminPage from './AdminPanel/AdminPage/AdminPage'
 import { AdminUsersList } from './AdminPanel/AdminUsersList'
 import { AdminUserPage } from './AdminPanel/AdminUserPage'
+import { UserFilesPage } from './AdminPanel/UserFilesList'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/register/' element={<RegisterPage/>}/>
             <Route path='/admin/' element={<AdminPage/>}/>
             <Route path='/users-list/' element={<AdminUsersList/>}/>
+            <Route path="/user_files/:userId" element={<UserFilesPage />} />
           </Routes>
         </main>
       </div>

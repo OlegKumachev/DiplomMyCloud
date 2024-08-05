@@ -11,6 +11,9 @@ import os
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_GET
+from .models import MyUser
+from django.shortcuts import get_object_or_404
+
 
 logger = logging.getLogger('main')
 
@@ -30,12 +33,8 @@ class FileViewSet(ModelViewSet):
 
     def get_queryset(self):
         try:
-            if self.request.user.is_superuser:
-                queryset = File.objects.all()
-                logger.info(f'Запрошены все файлы для {self.request.user}')
-            else:
-                queryset = File.objects.filter(user=self.request.user)
-                logger.info(f'Запрошены файлы для {self.request.user}')
+            queryset = File.objects.filter(user=self.request.user)
+            logger.info(f'Запрошены файлы для {self.request.user}')
             return queryset
         except Exception as e:
             logger.error(f'Ошибка получения файлов для {self.request.user}: {e}')
@@ -62,3 +61,23 @@ class FileViewSet(ModelViewSet):
             logger.error(f'Ошибка скачивания файла для {self.request.user}: {e}')
             return Response({'error': 'Failed to download file.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(detail=False, methods=['get'], url_path='user_files/(?P<user_id>\d+)')
+    def admin_get_files(self, request, user_id=None):
+        """
+        Returns files for a specific user ID.
+        """
+        try:
+            if not request.user.is_superuser:
+                return Response({'error': 'Only superusers can access files for other users.'}, status=status.HTTP_403_FORBIDDEN)
+            
+            user = get_object_or_404(MyUser, id=user_id)
+            queryset = File.objects.filter(user=user)
+            serializer = self.get_serializer(queryset, many=True)
+            logger.info(f'Файлы для пользователя с ID {user_id} запрошены администратором {request.user}')
+            return Response(serializer.data)
+        except MyUser.DoesNotExist:
+            logger.error(f'Пользователь с ID {user_id} не найден.')
+            return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            logger.error(f'Ошибка получения файлов для пользователя с ID {user_id}: {e}')
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

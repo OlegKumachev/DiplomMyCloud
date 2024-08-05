@@ -107,7 +107,7 @@ export const AdminUsersList = () => {
             <ul>
                 {users.map(user => (
                     <li key={user.id}>
-                        <a onClick={() => navigate(`/file/${user.id}`)}>{user.username}</a>
+                        <a onClick={() => navigate(`/user_files/${user.id}`)}>{user.username}</a>
                         <button onClick={() => deleteUser(user.id)}>Delete</button>
                         <button onClick={() => toggleSuperuserStatus(user.id, user.is_superuser)}>
                             {user.is_superuser ? 'Revoke Superuser & Staff' : 'Make Superuser & Staff'}

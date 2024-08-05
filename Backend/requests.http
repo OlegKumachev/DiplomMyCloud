@@ -1,26 +1,20 @@
 
 
 ### работа с файлами. добавить просмотр всех файлов для admin
-GET http://127.0.0.1:8000/api/file/
+GET http://127.0.0.1:8000/api/file/user_files/18/
 Content-Type: application/json
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNjk5Mzc4LCJpYXQiOjE3MjI2OTU3NzgsImp0aSI6IjIyY2E1ODYyNmY1MDQ2NmRiNWZhZTQ3ZjUzMzEyZWI0IiwidXNlcl9pZCI6MX0.poFVXeS-TyBEh6YOAN4JEWtk4MvI7cPOZRVJYGmYne4
-
-
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyODQ4MzkyLCJpYXQiOjE3MjI4NDQ3OTIsImp0aSI6IjdlMWZhZGVmODdlYzQ0MDU5N2Q4NTU3MGQ0ZGZlODIwIiwidXNlcl9pZCI6MTh9.mwfKcv3vp7ekp1LZRMR-R7VYdJ5fKvYeqz0BBWuRG68
 
 ###
-GET http://127.0.0.1:8000/download/None_Screenshot_2.jpg"
-
-
-###
-GET http://127.0.0.1:8000/api/file/
+GET http://127.0.0.1:8000/api/ad/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNjk5Mzc4LCJpYXQiOjE3MjI2OTU3NzgsImp0aSI6IjIyY2E1ODYyNmY1MDQ2NmRiNWZhZTQ3ZjUzMzEyZWI0IiwidXNlcl9pZCI6MX0.poFVXeS-TyBEh6YOAN4JEWtk4MvI7cPOZRVJYGmYne4
 
 
 ### Получение списка пользовател
 GET  http://127.0.0.1:8000/api/ad/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyNzg4NjE0LCJpYXQiOjE3MjI3ODUwMTQsImp0aSI6IjZlNjkzZGVhN2I0MDQ4YjZiMzU0ZDhjZTdjN2VmMjNlIiwidXNlcl9pZCI6MX0.u6MS66zxN2oaRYmNlO4LYPVLILqR3waasJh61dWE__g
-
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyODQ4MzkyLCJpYXQiOjE3MjI4NDQ3OTIsImp0aSI6IjdlMWZhZGVmODdlYzQ0MDU5N2Q4NTU3MGQ0ZGZlODIwIiwidXNlcl9pZCI6MTh9.mwfKcv3vp7ekp1LZRMR-R7VYdJ5fKvYeqz0BBWuRG68
 ###
 POST http://127.0.0.1:8000/register/
 Content-Type:  application/json
