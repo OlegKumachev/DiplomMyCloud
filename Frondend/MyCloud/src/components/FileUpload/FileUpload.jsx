@@ -11,8 +11,12 @@ const FileUpload = () => {
         setSelectedFile(e.target.files[0]);
     };
 
-    const handleCommentChange = (e) => {
+    const handleNameChange = (e) => {
         setOriginal_name(e.target.value);
+    };
+
+    const handlecommentChange = (e) => {
+        setOriginal_comment(e.target.value);
     };
 
     const handleSubmit = async (e) => {
@@ -60,9 +64,17 @@ const FileUpload = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Add a comment"
+                        placeholder="Add a Name"
+          
                         value={original_name}
-                        onChange={handleCommentChange}
+                        onChange={handleNameChange}
+                    />
+                     <input
+                        type="text"
+                        placeholder="Add a comment"
+          
+                        value={comment}
+                        onChange={handlecommentChange}
                     />
                 </div>
                 <button type="submit">Upload</button>

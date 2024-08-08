@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import humanize from 'humanize-plus';
-import DownloadFile from '../components/PublicLink/DownloadFile';
+import { PublicLink } from '../components/PublicLink/PublicLink';
 import UpdateFile from '../components/UpdateFile/UpdateFile';
 import DeleteFileButton from '../components/DeleteFile/DeleteFile';
 
@@ -102,7 +102,8 @@ export const UserFilesPage = () => {
                         <button onClick={() => handleDownload(file.id, file.original_name)}>Download {file.original_name}, {humanize.fileSize(file.size_n)}</button>
                         <UpdateFile fileId={file.id} onUpdate={handleUpdate} />
                         <DeleteFileButton fileId={file.id} onDelete={() => handleDelete(file.id)} />
-                        {publicLink && <DownloadFile publicLink={publicLink} />}
+                        <PublicLink fileId={file.id} setPublicLink={setPublicLink} />
+                        
                     </li>
                 ))}
             </ul>

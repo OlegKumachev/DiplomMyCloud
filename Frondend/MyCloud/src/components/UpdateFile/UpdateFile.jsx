@@ -13,7 +13,7 @@ const UpdateFile = ({ fileId, onUpdate }) => {
         };
 
         try {
-            const response = await axios.put(url, data, {
+            const response = await axios.patch(url, data, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',

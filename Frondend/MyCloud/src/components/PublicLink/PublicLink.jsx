@@ -1,38 +1,19 @@
-// GeneratePublicLink.jsx
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
-const GeneratePublicLink = ({ fileId, setPublicLink }) => {
-    const [error, setError] = React.useState('');
+ export const PublicLink = ({ fileId }) => {
+  const [copied, setCopied] = useState(false);
+  const url = `http://127.0.0.1:8000/api/download/${fileId}/liberty_link/`;
 
-    const generateLink = async () => {
-        const token = localStorage.getItem('token');
-        const url = `http://127.0.0.1:8000/api/file/${fileId}/generate-public-link/`;
+  const handleCopy = () => {
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+  };
 
-        try {
-            const response = await axios.get(url, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-            const special_url = response.data.special_url;
-            setPublicLink(publicLink);
-
-            // Copy the public link to clipboard
-            await navigator.clipboard.writeText(special_url);
-            alert('special_url link copied to clipboard!');
-        } catch (err) {
-            setError('Error generating public link');
-            console.error(err);
-        }
-    };
-
-    return (
-        <div>
-            <button onClick={generateLink}>Generate Public Link</button>
-            {error && <div>{error}</div>}
-        </div>
-    );
+  return (
+    <div>
+  
+      <button onClick={handleCopy}>Копировать</button>
+      {copied && <span>Ссылка скопирована!</span>}
+    </div>
+  );
 };
-
-export default GeneratePublicLink;

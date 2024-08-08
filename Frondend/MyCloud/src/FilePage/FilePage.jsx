@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DeleteFileButton from '../components/DeleteFile/DeleteFile';
 import UpdateFile from '../components/UpdateFile/UpdateFile';
-import GeneratePublicLink from '../components/PublicLink/PublicLink';
-import DownloadFile from '../components/PublicLink/DownloadFile';
+import { PublicLink } from '../components/PublicLink/PublicLink';
+
 
 export const FilePage = () => {
     const { fileId } = useParams();
     const [file, setFile] = useState(null);
     const [error, setError] = useState('');
-    const [publicLink, setPublicLink] = useState('');
+    const [ setPublicLink] = useState('');
+
     useEffect(() => {
         const fetchFile = async () => {
             const token = localStorage.getItem('token');
@@ -95,12 +96,11 @@ export const FilePage = () => {
     return (
         <div>
             <h1>{file.original_name}</h1>
-            <button onClick={handleDownload}>Download {file.original_name}, {file.size_n}</button>
-
+            <button onClick={handleDownload}>Download {file.original_name}, {file.size_n}, {file.id}</button>
             <UpdateFile fileId={file.id} onUpdate={handleUpdate} />
             <DeleteFileButton fileId={file.id} onDelete={handleDelete} />
-            <GeneratePublicLink fileId={fileId} setPublicLink={setPublicLink} />
-            {publicLink && <DownloadFile publicLink={publicLink} />}
+            <PublicLink fileId={file.id} setPublicLink={setPublicLink} />
+   
         </div>
     );
 };
