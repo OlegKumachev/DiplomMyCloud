@@ -41,7 +41,7 @@ const UpdateFile = ({ fileId, onUpdate }) => {
                 />
             </div>
             <button onClick={handleUpdate}>
-                Обновить имя файла
+                Обновить
             </button>
         </div>
     );

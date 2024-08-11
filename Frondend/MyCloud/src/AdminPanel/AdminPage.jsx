@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Хук для перенаправления
-import { FilesListPage } from '../../FilePage/FilesListPage';
-import { AdminUsersList } from '../AdminUsersList';
+import './AdminPage.css'
 
 const AdminPage = () => {
+    const [username, setUsername] = useState()
     const [adminData, setAdminData] = useState([]);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -37,26 +37,14 @@ const AdminPage = () => {
         fetchAdminData();
     }, []);
 
-    const handleDelete = (itemId) => {
-        setAdminData(adminData.filter(item => item.id !== itemId));
-    };
-
-    if (error) {
-        return <div>{error}</div>;
-    }
 
     return (
-        <div>
+        <div className="admin-container">
             <h1>Admin Page</h1>
             <ul>
-                <li><Link to='/files'>list file</Link></li>
-                <li><Link to='/users-list'>list users</Link></li>
+                <li><Link to='/files'>List Files</Link></li>
+                <li><Link to='/users-list'>List Users</Link></li>
             </ul>
-            
-            
-
-
-
         </div>
     );
 };

@@ -1,0 +1,61 @@
+/* Оформление контейнера страницы файла */
+.file-page-container {
+    width: 90%;
+    margin: 20px auto; /* Центрирование контейнера по горизонтали */
+    padding: 20px; /* Внутренние отступы контейнера */
+    background-color: #f8f9fa; /* Светло-серый фон контейнера */
+    border-radius: 8px; /* Закругление углов */
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
+/* Оформление заголовка страницы файла */
+.file-page-container h1 {
+    font-size: 24px; /* Размер шрифта заголовка */
+    color: #333; /* Цвет текста заголовка */
+    margin-bottom: 20px; /* Отступ снизу заголовка */
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+/* Оформление таблицы страницы файла */
+.file-page-table {
+    width: 100%; /* Таблица занимает всю ширину контейнера */
+    border-collapse: collapse; /* Убираем двойные границы между ячейками */
+}
+
+/* Оформление заголовков таблицы */
+.file-page-table th {
+    background-color: #007bff; /* Синий фон заголовков */
+    color: #fff; /* Белый цвет текста */
+    text-align: left; /* Выравнивание текста по левому краю */
+    padding: 10px; /* Внутренние отступы заголовков */
+}
+
+/* Оформление ячеек таблицы */
+.file-page-table td {
+    padding: 10px; /* Внутренние отступы ячеек */
+    border: 1px solid #ddd; /* Граница ячеек */
+    border-radius: 4px; /* Закругление углов ячеек */
+    background-color: #fff; /* Белый фон ячеек */
+}
+
+/* Темный фон для четных строк таблицы */
+.file-page-table tr:nth-child(even) td {
+    background-color: #f2f2f2; /* Светло-серый фон для четных строк */
+}
+
+/* Стили для кнопок в таблице */
+.file-page-table button {
+    background-color: #007bff; /* Синий фон кнопки */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 4px; /* Закругление углов */
+    padding: 5px 10px; /* Внутренние отступы кнопок */
+    cursor: pointer; /* Меняем курсор на указатель */
+    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+}
+
+/* Стили кнопок при наведении */
+.file-page-table button:hover {
+    background-color: #0056b3; /* Темно-синий фон при наведении */
+}

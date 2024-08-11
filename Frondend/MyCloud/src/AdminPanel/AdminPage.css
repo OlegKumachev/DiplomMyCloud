@@ -1,0 +1,39 @@
+.admin-container {
+    max-width: 600px; /* Максимальная ширина контейнера */
+    margin: 20px auto; /* Центрирование контейнера по центру страницы */
+    padding: 20px; /* Внутренние отступы контейнера */
+    background-color: #f8f9fa; /* Светлый фон контейнера */
+    border-radius: 8px; /* Закругление углов контейнера */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для объема контейнера */
+}
+
+.admin-container span {
+    font-size: 18px; /* Размер шрифта для приветственного текста */
+    color: #333; /* Цвет текста */
+}
+
+.admin-container h1 {
+    font-size: 24px; /* Размер шрифта заголовка */
+    color: #007bff; /* Синий цвет заголовка */
+    margin-top: 10px; /* Отступ сверху от заголовка */
+}
+
+.admin-container ul {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем внутренние отступы списка */
+}
+
+.admin-container ul li {
+    margin-bottom: 10px; /* Отступ между элементами списка */
+}
+
+.admin-container ul li a {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    font-size: 16px; /* Размер шрифта ссылок */
+    color: #007bff; /* Синий цвет ссылок */
+    transition: color 0.3s; /* Плавное изменение цвета ссылок при наведении */
+}
+
+.admin-container ul li a:hover {
+    color: #0056b3; /* Темно-синий цвет ссылок при наведении */
+}

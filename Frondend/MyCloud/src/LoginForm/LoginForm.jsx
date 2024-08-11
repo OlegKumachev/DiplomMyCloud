@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LoginRegisterForm.css';
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -54,30 +55,34 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
+    <div className="form-container">
+    <h1>Login</h1>
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
+        <div className="form-group">
+            <label>Username:</label>
+            <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+        </div>
+        <div className="form-group">
+            <label>Password:</label>
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+        </div>
+        <button type="submit">Login</button>
+        {error && <p className="error-message">{error}</p>}
     </form>
+</div>
+
   );
 };
 
-const LoginPage = () => {
+export const LoginPage = () => {
   const [token, setToken] = useState(null);
 
   const handleLogin = (newToken) => {
@@ -93,4 +98,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+

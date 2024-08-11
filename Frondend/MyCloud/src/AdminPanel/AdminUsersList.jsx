@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import humanize from 'humanize-plus';
+import './AdminUserList.css'
 
 export const AdminUsersList = () => {
     const [users, setUsers] = useState([]);
@@ -102,21 +103,23 @@ export const AdminUsersList = () => {
     }
 
     return (
-        <div>
-            <h1>Users List</h1>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>
-                        <a onClick={() => navigate(`/user_files/${user.id}`)}>{user.username}</a>
-                        <button onClick={() => deleteUser(user.id)}>Delete</button>
-                        <button onClick={() => toggleSuperuserStatus(user.id, user.is_superuser)}>
-                            {user.is_superuser ? 'Revoke Superuser & Staff' : 'Make Superuser & Staff'}
-                        </button>
-                        <div>ADMin {user.is_superuser ? 'Yes' : 'No'}</div>
-                        <div>Размер файлов {humanize.fileSize(user.total_size)}</div>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <div className="users-container">
+    <h1>Users List</h1>
+    <ul className="users-list">
+        {users.map(user => (
+            <li key={user.id}>
+                <a onClick={() => navigate(`/user_files/${user.id}`)}>{user.username}</a>
+                <div className="user-info">
+                    <button onClick={() => deleteUser(user.id)}>Delete</button>
+                    <button onClick={() => toggleSuperuserStatus(user.id, user.is_superuser)}>
+                        {user.is_superuser ? 'Revoke Superuser & Staff' : 'Make Superuser & Staff'}
+                    </button>
+                    <div>Admin {user.is_superuser ? 'Yes' : 'No'}</div>
+                    <div>File Size {humanize.fileSize(user.total_size)}</div>
+                </div>
+            </li>
+        ))}
+    </ul>
+</div>
     );
 };

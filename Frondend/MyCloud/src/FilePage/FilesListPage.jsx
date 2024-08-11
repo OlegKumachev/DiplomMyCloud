@@ -3,6 +3,9 @@ import FileUpload from '../components/FileUpload/FileUpload';
 import { useNavigate } from 'react-router-dom';
 import  DeleteFileButton from '../components/DeleteFile/DeleteFile'
 import humanize from 'humanize-plus';
+import './FilesListPage.css';
+import { FilePage } from './FilePage';
+
 
 export const FilesListPage = () => {
     const [files, setFiles] = useState([]);
@@ -47,17 +50,23 @@ export const FilesListPage = () => {
     }
 
     return (
-        <div>
+        <div className="files-container">
             <h1>Files</h1>
             <FileUpload />
-            <ul>
+                <ul>
                 {files.map(file => (
                     <li key={file.id}>
-                        <a onClick={() => navigate(`/file/${file.id}`)}>{file.original_name}, {humanize.filesize(file.size_n)}</a>
+                        <a onClick={() => navigate(`/file/${file.id}`)}>
+                            {file.original_name}, {humanize.fileSize(file.size_n)}
+                        </a>
                         <DeleteFileButton fileId={file.id} onDelete={handleDelete} />
                     </li>
                 ))}
             </ul>
+        <div>
+            <FilePage/>
         </div>
+        </div>
+       
     );
 };

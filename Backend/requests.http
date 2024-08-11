@@ -1,18 +1,17 @@
 
 
 ### работа с файлами. добавить просмотр всех файлов для admin
-GET http://127.0.0.1:8000/api/download/115/liberty_link/
+GET http://127.0.0.1:8000/api/ad/files/
 Content-Type: application/json
 
 ###
-GET  http://127.0.0.1:8000/api/file/104/
-Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyOTcxNDUxLCJpYXQiOjE3MjI5Njc4NTEsImp0aSI6ImVmMzNlNWMyNjZjYTQ4OGJhYmUzYWZlNzA3MTg5ZmNkIiwidXNlcl9pZCI6MTl9.nAkuBnPHT7g5wPB4YdSR--bNb4wyK7sJNxVayLe8hgo
+GET  http://127.0.0.1:8000/api/file/user_files/19/
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjA4OTk2LCJpYXQiOjE3MjMyMDUzOTYsImp0aSI6IjUzZjBiMDJmODlkNjQ5NmJhM2UwNWU4OTE5ZjNmYjc4IiwidXNlcl9pZCI6MTh9.ezwH6nHvBDDRiHgow4QlzkrFJzTMfzQxKNjZ9E46-Ck
 
-
-GET   http://127.0.0.1:8000/api/file/
+###
+GET   http://127.0.0.1:8000/api/ad/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIyOTM2NTQ5LCJpYXQiOjE3MjI5MzI5NDksImp0aSI6ImUxNzNhMjRlN2NhNDQzN2M5YTZiZTlhYTQxNzY3ZmQ0IiwidXNlcl9pZCI6MTh9.C-zEjeg8L7HfTqregruXUrP94GzDDx-vfeMC7J_Bew8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjA4OTk2LCJpYXQiOjE3MjMyMDUzOTYsImp0aSI6IjUzZjBiMDJmODlkNjQ5NmJhM2UwNWU4OTE5ZjNmYjc4IiwidXNlcl9pZCI6MTh9.ezwH6nHvBDDRiHgow4QlzkrFJzTMfzQxKNjZ9E46-Ck
 
 
 ### Получение списка пользовател

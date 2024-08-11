@@ -4,6 +4,7 @@ import humanize from 'humanize-plus';
 import { PublicLink } from '../components/PublicLink/PublicLink';
 import UpdateFile from '../components/UpdateFile/UpdateFile';
 import DeleteFileButton from '../components/DeleteFile/DeleteFile';
+import "./UserFilesList.css";
 
 export const UserFilesPage = () => {
     const { userId } = useParams();
@@ -93,20 +94,41 @@ export const UserFilesPage = () => {
     }
 
     return (
-        <div>
-            <h1>Files for User {userId}</h1>
-            <ul>
+    <div className="files-container">
+        <h1>Files for User {userId}</h1>
+        <table className="files-table">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Size</th>
+                    <th>Download</th>
+                    <th>Upload</th>
+                    <th>Delete</th>
+                    <th>Public Link</th>
+                </tr>
+            </thead>
+            <tbody>
                 {files.map(file => (
-                    <li key={file.id}>
-                        <h2>{file.original_name}</h2>
-                        <button onClick={() => handleDownload(file.id, file.original_name)}>Download {file.original_name}, {humanize.fileSize(file.size_n)}</button>
-                        <UpdateFile fileId={file.id} onUpdate={handleUpdate} />
-                        <DeleteFileButton fileId={file.id} onDelete={() => handleDelete(file.id)} />
-                        <PublicLink fileId={file.id} setPublicLink={setPublicLink} />
-                        
-                    </li>
+                    <tr key={file.id}>
+                        <td>{file.original_name}</td>
+                        <td>{humanize.fileSize(file.size_n)}</td>
+                        <td className="Download">
+                            <button onClick={() => handleDownload(file.id, file.original_name)}>Download</button>
+                        </td>
+                        <td className="Upload">
+                            <UpdateFile fileId={file.id} onUpdate={handleUpdate} />
+                        </td>
+                        <td className="Delete">
+                            <DeleteFileButton fileId={file.id} onDelete={() => handleDelete(file.id)} />
+                        </td>
+                        <td className="PublicLink">
+                            <PublicLink fileId={file.id} setPublicLink={setPublicLink} />   
+                        </td>                                     
+                    </tr>
                 ))}
-            </ul>
-        </div>
+            </tbody>
+        </table>
+    </div>
+
     );
 };

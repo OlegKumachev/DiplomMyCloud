@@ -1,0 +1,85 @@
+/* Оформление контейнера Header */
+.header-container {
+    position: fixed; /* Фиксируем Header в верхней части экрана */
+    top: 0; /* Позиция вверху */
+    left: 0; /* Позиция слева */
+    width: 90%; /* Контейнер занимает всю ширину экрана */
+    display: flex; /* Flexbox для удобного размещения элементов */
+    justify-content: space-between; /* Растягиваем заголовок и правый блок с кнопками */
+    align-items: center; /* Выравниваем элементы по вертикали по центру */
+    padding: 10px 20px; /* Внутренние отступы */
+    background-color: #f8f9fa; /* Светло-серый фон */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень под Header */
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #007bff; /* Синий цвет фона кнопок */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 20px; /* Закругляем углы */
+    padding: 8px 16px; /* Внутренние отступы */
+    margin-left: 10px; /* Уменьшаем отступ между кнопками */
+    cursor: pointer; /* Меняем курсор на указатель */
+    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+  }
+
+  /* Общий стиль для кнопок */
+.login-button,
+.register-button,
+.logout-button {
+    background-color: #007bff; /* Синий цвет фона кнопок */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 20px; /* Закругляем углы */
+    padding: 8px 16px; /* Внутренние отступы */
+    margin-left: 10px; /* Уменьшаем отступ между кнопками */
+    cursor: pointer; /* Меняем курсор на указатель */
+    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+}
+
+/* Стиль кнопок при наведении */
+.login-button:hover,
+.register-button:hover,
+.logout-button:hover {
+    background-color: #0056b3; /* Темно-синий цвет фона при наведении */
+}
+
+/* Стиль для заголовка "My Cloud" */
+.headed-cloud {
+    font-size: 24px; /* Размер текста */
+    color: #333; /* Темный цвет текста */
+    margin: 0; /* Убираем внешние отступы */
+    display: flex; /* Flex-контейнер для заголовка и изображения */
+    align-items: center; /* Выравниваем изображение и текст по вертикали */
+}
+
+/* Стиль для изображения рядом с заголовком */
+.headed-cloud img {
+    width: 40px; /* Ширина изображения */
+    height: 40px; /* Высота изображения */
+    margin-left: 10px; /* Отступ слева от текста */
+}
+
+/* Стиль для контейнера с информацией о пользователе и кнопками */
+.user-info {
+    display: flex; /* Flexbox для кнопок и имени пользователя */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+/* Стиль для имени пользователя */
+.username {
+    font-size: 18px; /* Размер текста имени пользователя */
+    color: #1100ff; /* Синий цвет текста */
+    margin-right: 15px; /* Отступ справа от имени */
+}
+
+
+/* Стиль для отображения ошибок */
+.error {
+    color: red; /* Красный цвет текста ошибки */
+    margin-top: 10px; /* Отступ сверху */
+    font-size: 14px; /* Размер текста ошибки */
+}

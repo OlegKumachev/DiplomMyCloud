@@ -1,0 +1,56 @@
+/* Оформление контейнера таблицы */
+.files-container {
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px; /* Отступы внутри контейнера */
+    background-color: #f8f9fa; /* Светло-серый фон для контейнера */
+}
+
+/* Оформление таблицы */
+.files-table {
+    width: 100%; /* Таблица занимает всю ширину контейнера */
+    border-collapse: separate; /* Разделяем границы ячеек */
+    border-spacing: 0; /* Убираем промежутки между ячейками */
+    margin-top: 10px; /* Отступ сверху таблицы */
+}
+
+/* Оформление заголовков таблицы */
+.files-table th {
+    background-color: #007bff; /* Синий фон заголовков */
+    color: #fff; /* Белый цвет текста */
+    padding: 10px; /* Внутренние отступы */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Оформление ячеек таблицы */
+.files-table td {
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ddd; /* Легкая граница ячеек */
+    background-color: #fff; /* Белый фон ячеек */
+    box-sizing: border-box; /* Учитываем границы и отступы в ширину и высоту ячеек */
+}
+
+/* Оформление строк таблицы */
+.files-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Светло-серый фон для четных строк */
+}
+
+.files-table tr:nth-child(odd) {
+    background-color: #fff; /* Белый фон для нечетных строк */
+}
+
+/* Стиль для кнопок */
+.files-table button {
+    background-color: #007bff; /* Синий цвет фона кнопок */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 4px; /* Закругляем углы кнопок */
+    padding: 5px 10px; /* Внутренние отступы */
+    cursor: pointer; /* Меняем курсор на указатель */
+    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+}
+
+/* Стиль кнопок при наведении */
+.files-table button:hover {
+    background-color: #0056b3; /* Темно-синий цвет фона при наведении */
+}

@@ -10,6 +10,7 @@ from .serializers import FileSerializers
 import os
 from django.shortcuts import get_object_or_404
 from django.core.files.storage import default_storage
+from .models import MyUser
 
 
 logger = logging.getLogger('main')
@@ -47,12 +48,12 @@ class FileViewSet(ModelViewSet):
         try:
             if not request.user.is_superuser:
                 return Response({'error': 'Only superusers can access files for other users.'}, status=status.HTTP_403_FORBIDDEN)
-            
-            user = get_object_or_404(MyUser, id=user_id)
-            queryset = File.objects.filter(user=user)
-            serializer = self.get_serializer(queryset, many=True)
-            logger.info(f'Файлы для пользователя с ID {user_id} запрошены администратором {request.user}')
-            return Response(serializer.data)
+            else:
+                user = get_object_or_404(MyUser, id=user_id)
+                queryset = File.objects.filter(user=user)
+                serializer = self.get_serializer(queryset, many=True)
+                logger.info(f'Файлы для пользователя с ID {user_id} запрошены администратором {request.user}')
+                return Response(serializer.data)
         except MyUser.DoesNotExist:
             logger.error(f'Пользователь с ID {user_id} не найден.')
             return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
