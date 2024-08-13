@@ -4,7 +4,6 @@ import { Header } from './components/Header/Header'
 import { LoginPage } from './LoginForm/LoginForm'
 import { RegisterPage } from './LoginForm/RegisterPage'
 import { FilesListPage } from './FilePage/FilesListPage'
-import { FilePage } from './FilePage/FilePage'
 import AdminPage from './AdminPanel/AdminPage'
 import { AdminUsersList } from './AdminPanel/AdminUsersList'
 import { AdminUserPage } from './AdminPanel/AdminUserPage'
@@ -14,12 +13,11 @@ import { UserFilesPage } from './AdminPanel/UserFilesList'
 function App() {
   return (
     <Router>
-      <div>
+      <div className='app-container'>
         <Header />
-        <main>
+        <main className='main-content'>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path='/file/:fileId' element={<FilePage/>}/>
             <Route path='/user/:userId' element={<AdminUserPage/>}/>
             <Route path='/files/' element={<FilesListPage/>}/>
             <Route path='/register/' element={<RegisterPage/>}/>

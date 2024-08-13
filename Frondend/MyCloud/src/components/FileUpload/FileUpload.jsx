@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './FileUpload.css';
 
-const FileUpload = () => {
+const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSuccess как пропс
     const [selectedFile, setSelectedFile] = useState(null);
-    const [comment, setComment] = useState(''); // Состояние для комментария
+    const [comment, setComment] = useState('');
     const [original_name, setOriginal_name] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -16,8 +16,8 @@ const FileUpload = () => {
         setOriginal_name(e.target.value);
     };
 
-    const handleCommentChange = (e) => { // Исправлено имя функции
-        setComment(e.target.value); // Используйте setComment для обновления комментария
+    const handleCommentChange = (e) => {
+        setComment(e.target.value);
     };
 
     const handleSubmit = async (e) => {
@@ -31,7 +31,7 @@ const FileUpload = () => {
         const formData = new FormData();
         formData.append('file', selectedFile);
         formData.append('original_name', original_name);
-        formData.append('comment', comment); // Добавление комментария в formData
+        formData.append('comment', comment);
 
         try {
             const token = localStorage.getItem('token');
@@ -47,10 +47,13 @@ const FileUpload = () => {
                 throw new Error('Failed to upload file');
             }
 
-            setSuccess('File uploaded successfully');
             setSelectedFile(null);
-            setOriginal_name(''); // Очистить поле имени после успешной загрузки
-            setComment(''); // Очистить поле комментария после успешной загрузки
+            setOriginal_name('');
+            setComment('');
+
+            if (onUploadSuccess) {
+                onUploadSuccess();
+            }
         } catch (err) {
             setError(err.message);
         }
@@ -59,25 +62,25 @@ const FileUpload = () => {
     return (
         <div className="upload-container">
             <h2>Upload File</h2>
+            <div className="input-group">
+                <input
+                    type="text"
+                    placeholder="Add a Name"
+                    value={original_name}
+                    onChange={handleNameChange}
+                    className="text-input"
+                />
+                <input
+                    type="text"
+                    placeholder="Add a Comment"
+                    value={comment}
+                    onChange={handleCommentChange}
+                    className="text-input"
+                />
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="input-group">
                     <input type="file" onChange={handleFileChange} className="file-input" />
-                </div>
-                <div className="input-group">
-                    <input
-                        type="text"
-                        placeholder="Add a Name"
-                        value={original_name}
-                        onChange={handleNameChange}
-                        className="text-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Add a Comment"
-                        value={comment}
-                        onChange={handleCommentChange} // Исправлено имя функции
-                        className="text-input"
-                    />
                 </div>
                 <button type="submit" className="upload-button">Upload</button>
                 {error && <div className="error-message">{error}</div>}

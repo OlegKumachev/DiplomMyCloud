@@ -29,7 +29,6 @@ const LoginForm = ({ onLogin }) => {
 
       onLogin(data.access);
 
-      // Проверка статуса is_superuser
       const userResponse = await fetch('http://127.0.0.1:8000/api/ad/me/', {
         method: 'GET',
         headers: {
@@ -37,10 +36,6 @@ const LoginForm = ({ onLogin }) => {
           'Authorization': `Bearer ${data.access}`,
         },
       });
-
-      if (!userResponse.ok) {
-        throw new Error('Failed to fetch user data');
-      }
 
       const userData = await userResponse.json();
 

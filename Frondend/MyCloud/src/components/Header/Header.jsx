@@ -3,12 +3,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';  // Импорт CSS файла
 
 export const Header = () => {
-    const [username, setUsername] = useState(''); // Состояние для имени пользователя
-    const [error, setError] = useState('');       // Состояние для ошибок
+    const [username, setUsername] = useState(''); 
+    const [error, setError] = useState('');       
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Проверка, авторизован ли пользователь
     const isAuthenticated = !!localStorage.getItem('token');
 
     useEffect(() => {
@@ -20,18 +19,14 @@ export const Header = () => {
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ad/me/', { // Замените на правильный URL вашего API
+                const response = await fetch('http://127.0.0.1:8000/api/ad/me/', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user data');
-                }
-
                 const data = await response.json();
-                setUsername(data.username); // Устанавливаем имя пользователя
+                setUsername(data.username); 
             } catch (err) {
                 setError(err.message);
             }

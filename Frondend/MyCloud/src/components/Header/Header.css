@@ -1,30 +1,15 @@
 /* Оформление контейнера Header */
 .header-container {
-    position: fixed; /* Фиксируем Header в верхней части экрана */
-    top: 0; /* Позиция вверху */
-    left: 0; /* Позиция слева */
-    width: 90%; /* Контейнер занимает всю ширину экрана */
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%; /* Контейнер занимает всю ширину контейнера .app-container */
     display: flex; /* Flexbox для удобного размещения элементов */
     justify-content: space-between; /* Растягиваем заголовок и правый блок с кнопками */
-    align-items: center; /* Выравниваем элементы по вертикали по центру */
     padding: 10px 20px; /* Внутренние отступы */
-    background-color: #f8f9fa; /* Светло-серый фон */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень под Header */
-}
-
-.header-buttons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #007bff; /* Синий цвет фона кнопок */
-    color: #fff; /* Белый цвет текста */
-    border: none; /* Убираем границу */
-    border-radius: 20px; /* Закругляем углы */
-    padding: 8px 16px; /* Внутренние отступы */
-    margin-left: 10px; /* Уменьшаем отступ между кнопками */
-    cursor: pointer; /* Меняем курсор на указатель */
-    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
-  }
+    background-color: #7d73d5; /* Светло-серый фон */
+    }
 
   /* Общий стиль для кнопок */
 .login-button,
