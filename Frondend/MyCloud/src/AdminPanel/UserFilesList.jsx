@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import humanize from 'humanize-plus';
 import { PublicLink } from '../components/PublicLink/PublicLink';
-import UpdateFile from '../components/UpdateFile/UpdateFile';
-import DeleteFileButton from '../components/DeleteFile/DeleteFile';
+import { UpdateFile } from '../components/UpdateFile/UpdateFile';
+import { DeleteFileButton } from '../components/DeleteFile/DeleteFile';
+import { UpdateComment } from '../components/UpdateFile/UpdateComment'
 import "./UserFilesList.css";
 
 export const UserFilesPage = () => {
     const { userId } = useParams();
     const [files, setFiles] = useState([]);
     const [error, setError] = useState('');
-    const [publicLink, setPublicLink] = useState('');
+    const [setPublicLink] = useState('');
 
     useEffect(() => {
         const fetchFiles = async () => {
@@ -28,7 +29,7 @@ export const UserFilesPage = () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch files');
+                    throw new Error('Не удалось получить файлы');
                 }
 
                 const data = await response.json();
@@ -57,7 +58,7 @@ export const UserFilesPage = () => {
             });
 
             if (!response.ok) {
-                throw new Error(`Failed to download file (status: ${response.status})`);
+                throw new Error(`Не удалось скачать  (status: ${response.status})`);
             }
 
             const blob = await response.blob();
@@ -90,7 +91,7 @@ export const UserFilesPage = () => {
     }
 
     if (!files.length) {
-        return <div>Loading...</div>;
+        return <div>Загрузка...</div>;
     }
 
     return (
@@ -99,12 +100,13 @@ export const UserFilesPage = () => {
         <table className="files-table">
             <thead>
                 <tr>
-                    <th>File Name</th>
-                    <th>Size</th>
-                    <th>Download</th>
-                    <th>Upload</th>
-                    <th>Delete</th>
-                    <th>Public Link</th>
+                    <th>Имя Файла</th>
+                    <th>Размер</th>
+                    <th>Скачить</th>
+                    <th>Обновить</th>
+                    <th>Удалить</th>
+                    <th>Поделиться</th>
+                    <th>Коментарий</th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +125,11 @@ export const UserFilesPage = () => {
                         </td>
                         <td className="PublicLink">
                             <PublicLink fileId={file.id} setPublicLink={setPublicLink} />   
-                        </td>                                     
+                        </td>
+                        <td>
+                            <UpdateComment/> 
+                            {file.comment}
+                        </td>                                  
                     </tr>
                 ))}
             </tbody>

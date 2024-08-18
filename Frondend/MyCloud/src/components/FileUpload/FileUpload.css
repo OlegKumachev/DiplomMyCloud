@@ -1,80 +1,79 @@
-/* Основной контейнер для загрузки файла, растянутый по ширине */
+
 .upload-container {
-     /* Растягиваем контейнер на всю ширину */
-    margin: 0 auto; /* Центрируем контейнер по горизонтали */
-    padding: 20px; /* Внутренние отступы контейнера */
-    background-color: #f8f9fa; /* Светло-серый фон */
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: #f8f9fa; 
 }
 
-/* Оформление заголовка */
+
 .upload-container h2 {
-    font-size: 24px; /* Увеличенный размер шрифта */
-    color: #333; /* Цвет текста */
-    margin-bottom: 20px; /* Отступ снизу */
+    font-size: 24px; 
+    color: #333; 
+    margin-bottom: 20px; 
 }
 
-/* Группа полей ввода */
+
 .input-group {
-    margin-bottom: 15px; /* Отступ между группами полей */
+    margin-bottom: 15px; 
 }
 
-/* Горизонтальное выравнивание группы полей */
+
 .horizontal-group {
-    display: flex; /* Включаем Flexbox */
-    gap: 10px; /* Пробел между полями */
-    width: 100%; /* Полная ширина контейнера */
-    justify-content: space-between; /* Пространство между элементами */
+    display: flex; 
+    gap: 10px; 
+    width: 100%; 
+    justify-content: space-between; 
 }
 
-/* Поля ввода текста */
+
 .text-input {
-    flex: 1; /* Поля равной ширины */
-    padding: 10px; /* Внутренние отступы */
-    border: 1px solid #ddd; /* Граница */
-    border-radius: 4px; /* Закругленные углы */
-    font-size: 16px; /* Размер шрифта */
-    background-color: #fff; /* Белый фон */
+    flex: 1; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+    font-size: 16px; 
+    background-color: #fff; 
 }
 
-/* Поле выбора файла */
+
 .file-input {
-    width: 100%; /* Полная ширина */
-    padding: 10px; /* Внутренние отступы */
-    border: 1px solid #ddd; /* Граница */
-    border-radius: 4px; /* Закругленные углы */
-    font-size: 16px; /* Размер шрифта */
-    background-color: #fff; /* Белый фон */
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    background-color: #fff; 
 }
 
-/* Кнопка загрузки */
+
 .upload-button {
-    width: 100%; /* Полная ширина */
-    padding: 12px; /* Внутренние отступы */
-    background-color: #007bff; /* Синий фон */
-    color: #fff; /* Белый цвет текста */
-    border: none; /* Убираем границу */
-    border-radius: 4px; /* Закругленные углы */
-    font-size: 18px; /* Размер шрифта */
-    cursor: pointer; /* Курсор указателя */
-    transition: background-color 0.3s; /* Плавный переход */
+    width: 100%; 
+    padding: 12px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 18px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
 .upload-button:hover {
-    background-color: #0056b3; /* Темно-синий фон при наведении */
+    background-color: #0056b3; 
 }
 
-/* Сообщение об ошибке */
+
 .error-message {
-    color: #dc3545; /* Красный цвет */
-    font-size: 14px; /* Размер шрифта */
-    margin-top: 10px; /* Отступ сверху */
-    text-align: center; /* Центрирование текста */
+    color: #dc3545; 
+    font-size: 14px; 
+    margin-top: 10px; 
+    text-align: center; 
 }
 
-/* Сообщение об успехе */
+
 .success-message {
-    color: #28a745; /* Зеленый цвет */
-    font-size: 14px; /* Размер шрифта */
-    margin-top: 10px; /* Отступ сверху */
-    text-align: center; /* Центрирование текста */
+    color: #28a745; 
+    font-size: 14px; 
+    margin-top: 10px; 
+    text-align: center; 
 }

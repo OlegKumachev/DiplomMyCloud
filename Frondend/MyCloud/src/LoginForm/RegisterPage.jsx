@@ -22,22 +22,20 @@ export const RegisterPage = ({ onRegister }) => {
             });
 
             if (!response.ok) {
-                throw new Error('Registration failed');
+                throw new Error('Ошибка Регистрации');
             }
 
             const data = await response.json();
-            console.log('Registration successful:', data);
-
-            // Save tokens in localStorage
+          
             localStorage.setItem('token', data.access);
             localStorage.setItem('refreshToken', data.refresh);
 
-            // Optionally call onRegister if needed
+        
             if (onRegister) {
-                onRegister(data.access); // Handle token if passed to parent
+                onRegister(data.access);
             }
 
-            // Redirect to the files page
+     
             window.location.href = '/files'; 
 
         } catch (err) {
@@ -47,7 +45,7 @@ export const RegisterPage = ({ onRegister }) => {
 
     return (
         <div className="form-container">
-    <h1>Register</h1>
+    <h1>Регистрация</h1>
     <form onSubmit={handleSubmit}>
         <div className="form-group">
             <label>Login:</label>
@@ -59,7 +57,7 @@ export const RegisterPage = ({ onRegister }) => {
             />
         </div>
         <div className="form-group">
-            <label>First Name:</label>
+            <label>Имя:</label>
             <input
                 type="text"
                 value={first_name}
@@ -68,7 +66,7 @@ export const RegisterPage = ({ onRegister }) => {
             />
         </div>
         <div className="form-group">
-            <label>Last Name:</label>
+            <label>Фамилия:</label>
             <input
                 type="text"
                 value={last_name}
@@ -86,7 +84,7 @@ export const RegisterPage = ({ onRegister }) => {
             />
         </div>
         <div className="form-group">
-            <label>Password:</label>
+            <label>Пароль:</label>
             <input
                 type="password"
                 value={password}
@@ -94,7 +92,7 @@ export const RegisterPage = ({ onRegister }) => {
                 required
             />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Регистрация</button>
         {error && <div className="error-message">{error}</div>}
     </form>
 </div>

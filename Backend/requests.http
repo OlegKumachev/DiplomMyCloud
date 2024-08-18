@@ -5,8 +5,13 @@ GET http://127.0.0.1:8000/api/ad/files/
 Content-Type: application/json
 
 ###
-GET  http://127.0.0.1:8000/api/file/user_files/19/
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjA4OTk2LCJpYXQiOjE3MjMyMDUzOTYsImp0aSI6IjUzZjBiMDJmODlkNjQ5NmJhM2UwNWU4OTE5ZjNmYjc4IiwidXNlcl9pZCI6MTh9.ezwH6nHvBDDRiHgow4QlzkrFJzTMfzQxKNjZ9E46-Ck
+GET  http://127.0.0.1:8000/api/file/177/
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzNTQzODMwLCJpYXQiOjE3MjM1NDAyMzAsImp0aSI6IjgzZjBkOTY5YTQ2ODQxNzRhOTI2ZDRmZTQzOWI2ZjViIiwidXNlcl9pZCI6MTh9.258pq5zGo-Ng-VJUM_Zy5mTJOqZeymUlpGxnV-iC4GA
+
+{
+    "comment": "new comment"
+}
 
 ###
 GET   http://127.0.0.1:8000/api/ad/

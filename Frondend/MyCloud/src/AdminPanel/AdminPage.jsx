@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Хук для перенаправления
+import { useNavigate, Link } from 'react-router-dom';
 import './AdminPage.css'
 
-const AdminPage = () => {
-    const [username, setUsername] = useState()
-    const [adminData, setAdminData] = useState([]);
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
+ export const AdminPage = () => {
+    const [username] = useState()
+    const [ setAdminData] = useState([]);
+    const [ setError] = useState('');
+
 
     useEffect(() => {
         const fetchAdminData = async () => {
@@ -17,14 +17,14 @@ const AdminPage = () => {
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ad/', { // Используйте ваш API для админских данных
+                const response = await fetch('http://127.0.0.1:8000/api/ad/', { 
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch admin data');
+                    throw new Error('Не удалось получить данные');
                 }
 
                 const data = await response.json();
@@ -40,13 +40,12 @@ const AdminPage = () => {
 
     return (
         <div className="admin-container">
-            <h1>Admin Page</h1>
+            <h1>Админ панель</h1>
             <ul>
-                <li><Link to='/files'>List Files</Link></li>
-                <li><Link to='/users-list'>List Users</Link></li>
+                <li><Link to='/files'>Список файлов {username}</Link></li>
+                <li><Link to='/users-list'>Список пользователей</Link></li>
             </ul>
         </div>
     );
 };
 
-export default AdminPage;

@@ -22,7 +22,7 @@ export const AdminUserPage = () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch file');
+                    throw new Error('Не удалось получить файл');
                 }
 
                 const data = await response.json();
@@ -36,7 +36,7 @@ export const AdminUserPage = () => {
     }, [userId]);
 
     if (!userData) {
-        return <div>Loading...</div>;
+        return <div>Загрузка...</div>;
     }
 
     if (error) {

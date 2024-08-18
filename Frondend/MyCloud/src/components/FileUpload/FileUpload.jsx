@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FileUpload.css';
 
-const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSuccess как пропс
+export const FileUpload = ({ onUploadSuccess }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [comment, setComment] = useState('');
     const [original_name, setOriginal_name] = useState('');
@@ -44,7 +44,7 @@ const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSucces
             });
 
             if (!response.ok) {
-                throw new Error('Failed to upload file');
+                throw new Error('Ошибка обновления файла');
             }
 
             setSelectedFile(null);
@@ -65,14 +65,14 @@ const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSucces
             <div className="input-group">
                 <input
                     type="text"
-                    placeholder="Add a Name"
+                    placeholder="Добавить имя"
                     value={original_name}
                     onChange={handleNameChange}
                     className="text-input"
                 />
                 <input
                     type="text"
-                    placeholder="Add a Comment"
+                    placeholder="Добавить комментарий"
                     value={comment}
                     onChange={handleCommentChange}
                     className="text-input"
@@ -82,7 +82,7 @@ const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSucces
                 <div className="input-group">
                     <input type="file" onChange={handleFileChange} className="file-input" />
                 </div>
-                <button type="submit" className="upload-button">Upload</button>
+                <button type="submit" className="upload-button">Загрузить</button>
                 {error && <div className="error-message">{error}</div>}
                 {success && <div className="success-message">{success}</div>}
             </form>
@@ -90,4 +90,4 @@ const FileUpload = ({ onUploadSuccess }) => { // Добавьте onUploadSucces
     );
 };
 
-export default FileUpload;
+

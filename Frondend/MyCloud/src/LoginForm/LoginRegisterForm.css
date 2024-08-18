@@ -1,7 +1,7 @@
-/* Оформление контейнера формы */
+
 .form-container {
-    max-width: 400px; /* Максимальная ширина формы */
-    margin: 0 auto; /* Центрирование формы по горизонтали */
+    max-width: 400px;
+    margin: 0 auto; 
     padding: 20px; /* Отступы внутри формы */
     background-color: #f8f9fa; /* Светло-серый фон */
     border-radius: 8px; /* Закругление углов */

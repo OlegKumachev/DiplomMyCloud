@@ -21,7 +21,7 @@ const LoginForm = ({ onLogin }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to login');
+        throw new Error('Не удалось получить Логин');
       }
 
       const data = await response.json();
@@ -51,10 +51,10 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <div className="form-container">
-    <h1>Login</h1>
+    <h1>Логин</h1>
     <form onSubmit={handleSubmit}>
         <div className="form-group">
-            <label>Username:</label>
+            <label>Имя Пользователя:</label>
             <input
                 type="text"
                 value={username}
@@ -62,14 +62,14 @@ const LoginForm = ({ onLogin }) => {
             />
         </div>
         <div className="form-group">
-            <label>Password:</label>
+            <label>Пароль:</label>
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Логин</button>
         {error && <p className="error-message">{error}</p>}
     </form>
 </div>

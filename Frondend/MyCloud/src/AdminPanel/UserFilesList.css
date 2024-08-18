@@ -1,56 +1,56 @@
-/* Оформление контейнера таблицы */
+
 .files-container {
     width: 100%;
     justify-content: space-between;
-    padding: 20px; /* Отступы внутри контейнера */
-    background-color: #f8f9fa; /* Светло-серый фон для контейнера */
+    padding: 20px; 
+    background-color: #f8f9fa; 
 }
 
-/* Оформление таблицы */
+
 .files-table {
-    width: 100%; /* Таблица занимает всю ширину контейнера */
-    border-collapse: separate; /* Разделяем границы ячеек */
-    border-spacing: 0; /* Убираем промежутки между ячейками */
-    margin-top: 10px; /* Отступ сверху таблицы */
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0; 
+    margin-top: 10px; 
 }
 
-/* Оформление заголовков таблицы */
+
 .files-table th {
-    background-color: #007bff; /* Синий фон заголовков */
-    color: #fff; /* Белый цвет текста */
-    padding: 10px; /* Внутренние отступы */
-    text-align: left; /* Выравнивание текста по левому краю */
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    text-align: left; 
 }
 
-/* Оформление ячеек таблицы */
+
 .files-table td {
-    padding: 10px; /* Внутренние отступы */
-    border: 1px solid #ddd; /* Легкая граница ячеек */
-    background-color: #fff; /* Белый фон ячеек */
-    box-sizing: border-box; /* Учитываем границы и отступы в ширину и высоту ячеек */
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    background-color: #fff;
+    box-sizing: border-box; 
 }
 
-/* Оформление строк таблицы */
+
 .files-table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Светло-серый фон для четных строк */
+    background-color: #f2f2f2; 
 }
 
 .files-table tr:nth-child(odd) {
-    background-color: #fff; /* Белый фон для нечетных строк */
+    background-color: #fff; 
 }
 
-/* Стиль для кнопок */
+
 .files-table button {
-    background-color: #007bff; /* Синий цвет фона кнопок */
-    color: #fff; /* Белый цвет текста */
-    border: none; /* Убираем границу */
-    border-radius: 4px; /* Закругляем углы кнопок */
-    padding: 5px 10px; /* Внутренние отступы */
-    cursor: pointer; /* Меняем курсор на указатель */
-    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
-/* Стиль кнопок при наведении */
+
 .files-table button:hover {
-    background-color: #0056b3; /* Темно-синий цвет фона при наведении */
+    background-color: #0056b3; 
 }

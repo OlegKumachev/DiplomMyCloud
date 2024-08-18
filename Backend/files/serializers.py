@@ -10,7 +10,8 @@ class FileSerializers(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.comment = validated_data.get('comment', instance.comment)
-        instance.original_name = validated_data.get('original_name', instance.comment)
-
+        if 'original_name' in validated_data:
+            instance.original_name = validated_data['original_name']
+        
         instance.save()
         return instance

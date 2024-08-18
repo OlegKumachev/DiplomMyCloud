@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const UpdateComment = ({ fileId, onUpdate }) => {
     const [newComment, setNewComment] = useState('');
+    const [error, setError] = useState('');
 
     const handleUpdate = async () => {
         const token = localStorage.getItem('token');
@@ -20,10 +21,11 @@ export const UpdateComment = ({ fileId, onUpdate }) => {
                 },
             });
             
-            console.log('File updated successfully', response.data);
             onUpdate(fileId,  newComment);
-        } catch (error) {
-            console.error('Error updating file:', error);
+            setNewComment('')
+            
+            } catch (error) {
+                setError(err.message);
         }
     };
 

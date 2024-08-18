@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import FileUpload from '../components/FileUpload/FileUpload';
-import { useNavigate } from 'react-router-dom';
-import DeleteFileButton from '../components/DeleteFile/DeleteFile';
 import humanize from 'humanize-plus';
-import '../AdminPanel/UserFilesList.css';
-import UpdateFile from '../components/UpdateFile/UpdateFile';
+import { useNavigate } from 'react-router-dom';
+import { DeleteFileButton } from '../components/DeleteFile/DeleteFile';
+import { UpdateFile}  from '../components/UpdateFile/UpdateFile';
 import { PublicLink } from '../components/PublicLink/PublicLink';
 import { UpdateComment } from '../components/UpdateFile/UpdateComment';
+import { FileUpload}  from '../components/FileUpload/FileUpload';
+import '../AdminPanel/UserFilesList.css';
 
 export const FilesListPage = () => {
     const [files, setFiles] = useState([]);
     const [error, setError] = useState('');
     const [setPublicLink] = useState('');
-    const navigate = useNavigate();
+  
 
     const fetchFiles = async () => {
         const token = localStorage.getItem('token');
@@ -29,7 +29,7 @@ export const FilesListPage = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch files');
+                throw new Error('Не удалось получить файлы');
             }
 
             const data = await response.json();
@@ -58,8 +58,8 @@ export const FilesListPage = () => {
                 },
             });
 
-            if (!response.ok) {
-                throw new Error(`Failed to download file (status: ${response.status})`);
+            if (!response.ok) { 
+
             }
 
             const blob = await response.blob();
@@ -83,9 +83,8 @@ export const FilesListPage = () => {
         setFiles(prevFiles => prevFiles.map(file => 
             file.id === fileId ? { ...file, original_name: newName } : file
         ));
-        fetchFiles();
+        fetchFiles()
     };
-
 
     const handleCommentFiles = (fileId, newComment) => {
         setFiles(prevFiles => prevFiles.map(file => 
@@ -93,7 +92,6 @@ export const FilesListPage = () => {
         ));
     };
     
-
     if (error) {
         return <div>{error}</div>;
     }
@@ -105,13 +103,13 @@ export const FilesListPage = () => {
             <table className="files-table">
                 <thead>
                     <tr>
-                        <th>File Name</th>
-                        <th>Size</th>
-                        <th>Download</th>
-                        <th>Upload</th>
-                        <th>Delete</th>
-                        <th>Public Link</th>
-                        <th>Comment</th>
+                        <th>Имя файла</th>
+                        <th>Размер</th>
+                        <th>Скачать файл</th>
+                        <th>Обновить файл</th>
+                        <th>Удалить</th>
+                        <th>Публичная ссылка</th>
+                        <th>Комментарий</th>
                     </tr>
                 </thead>
                 <tbody>

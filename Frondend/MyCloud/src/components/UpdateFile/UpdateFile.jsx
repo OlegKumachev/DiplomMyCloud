@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const UpdateFile = ({ fileId, onUpdate }) => {
+ export const UpdateFile = ({ fileId, onUpdate }) => {
     const [newName, setNewName] = useState('');
-
+    const [error, setError] = useState('');
 
     const handleUpdate = async () => {
         const token = localStorage.getItem('token');
@@ -20,11 +20,10 @@ const UpdateFile = ({ fileId, onUpdate }) => {
                     'Content-Type': 'application/json',
                 },
             });
-            
-            console.log('File updated successfully', response.data);
-            onUpdate(fileId, newName); // Передача новых данных обратно в родительский компонент
+          
+            onUpdate(fileId, newName); 
         } catch (error) {
-            console.error('Error updating file:', error);
+            setError(err.message);
         }
     };
 
@@ -48,4 +47,4 @@ const UpdateFile = ({ fileId, onUpdate }) => {
     );
 };
 
-export default UpdateFile;
+
