@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 export const UpdateComment = ({ fileId, onUpdate }) => {
     const [newComment, setNewComment] = useState('');
     const [error, setError] = useState('');
 
     const handleUpdate = async () => {
         const token = localStorage.getItem('token');
-        const url = `http://127.0.0.1:8000/api/file/${fileId}/`;
+        const url = `${apiUrl}api/file/${fileId}/`;
 
         const data = {
             comment: newComment

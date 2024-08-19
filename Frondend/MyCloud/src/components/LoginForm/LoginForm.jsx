@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginRegisterForm.css';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +14,7 @@ const LoginForm = ({ onLogin }) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/token/', {
+      const response = await fetch(`${apiUrl}/api/token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ const LoginForm = ({ onLogin }) => {
 
       onLogin(data.access);
 
-      const userResponse = await fetch('http://127.0.0.1:8000/api/ad/me/', {
+      const userResponse = await fetch(`${apiUrl}/api/ad/me/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './FileUpload.css';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 export const FileUpload = ({ onUploadSuccess }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [comment, setComment] = useState('');
@@ -35,7 +37,7 @@ export const FileUpload = ({ onUploadSuccess }) => {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://127.0.0.1:8000/api/file/', {
+            const response = await fetch(`${apiUrl}/api/file/`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -60,7 +62,7 @@ export const FileUpload = ({ onUploadSuccess }) => {
     };
 
     return (
-        <div className="upload-container">
+        <div>
             <h2>Upload File</h2>
             <div className="input-group">
                 <input

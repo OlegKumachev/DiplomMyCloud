@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import humanize from 'humanize-plus';
-import { useNavigate } from 'react-router-dom';
-import { DeleteFileButton } from '../components/DeleteFile/DeleteFile';
-import { UpdateFile}  from '../components/UpdateFile/UpdateFile';
-import { PublicLink } from '../components/PublicLink/PublicLink';
-import { UpdateComment } from '../components/UpdateFile/UpdateComment';
-import { FileUpload}  from '../components/FileUpload/FileUpload';
+import { DeleteFileButton } from '../DeleteFile/DeleteFile';
+import { UpdateFile}  from '../UpdateFile/UpdateFile';
+import { PublicLink } from '../PublicLink/PublicLink';
+import { UpdateComment } from '../UpdateFile/UpdateComment';
+import { FileUpload}  from '../FileUpload/FileUpload';
 import '../AdminPanel/UserFilesList.css';
+
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const FilesListPage = () => {
     const [files, setFiles] = useState([]);
@@ -22,7 +24,7 @@ export const FilesListPage = () => {
         }
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/file/', {
+            const response = await fetch(`${apiUrl}/api/file/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -51,7 +53,7 @@ export const FilesListPage = () => {
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/file/${fileId}/download/`, {
+            const response = await fetch(`${apiUrl}/api/file/${fileId}/download/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -97,7 +99,7 @@ export const FilesListPage = () => {
     }
 
     return (
-        <div className="files-container">
+        <div>
             <h1>Files</h1>
             <FileUpload onUploadSuccess={fetchFiles} />
             <table className="files-table">

@@ -1,18 +1,4 @@
 
-.upload-container {
-    margin: 0 auto; 
-    padding: 20px; 
-    background-color: #f8f9fa; 
-}
-
-
-.upload-container h2 {
-    font-size: 24px; 
-    color: #333; 
-    margin-bottom: 20px; 
-}
-
-
 .input-group {
     margin-bottom: 15px; 
 }
@@ -29,20 +15,20 @@
 .text-input {
     flex: 1; 
     padding: 10px; 
-    border: 1px solid #ddd; 
+    border: 1px solid #121111; 
     border-radius: 4px;
     font-size: 16px; 
-    background-color: #fff; 
+    background-color: #fafafa; 
 }
 
 
 .file-input {
     width: 100%; 
     padding: 10px; 
-    border: 1px solid #ddd; 
+    border: 1px solid #121111; 
     border-radius: 4px; 
     font-size: 16px; 
-    background-color: #fff; 
+    background-color: #f5f1f1; 
 }
 
 

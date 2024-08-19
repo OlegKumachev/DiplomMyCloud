@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 export const AdminUserPage = () => {
     const { userId } = useParams();
     const [userData, setUserData] = useState(null);
@@ -15,14 +17,14 @@ export const AdminUserPage = () => {
             }
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/ad/${userId}/`, {
+                const response = await fetch(`${apiUrl}/api/ad/${userId}/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error('Не удалось получить файл');
+                    throw new Error('Failed to retrieve data');
                 }
 
                 const data = await response.json();

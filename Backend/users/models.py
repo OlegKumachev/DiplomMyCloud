@@ -8,12 +8,9 @@ from .manager import CustomUserManager
 class MyUser(AbstractUser):
     username = models.CharField(max_length=100, unique=True, verbose_name='Login')
     is_superuser = models.BooleanField(default=False, verbose_name='admin')
-    storage_path = models.URLField(blank=True)
-    folder_name = models.CharField(max_length=255, blank=True)
     objects = CustomUserManager()
     total_size = models.BigIntegerField(default=0)
-    
-   
+
 
     def save(self, *args, **kwargs):
         created = not self.pk
@@ -24,8 +21,9 @@ class MyUser(AbstractUser):
             os.makedirs(full_user_directory, exist_ok=True)
             self.storage_path = user_directory
 
+
     def update_total_size(self):
-        """ Обновляет размер хранилища пользователя """
+
         user_directory = os.path.join(settings.MEDIA_ROOT, f'user_{self.username}')
         total_size = 0
 

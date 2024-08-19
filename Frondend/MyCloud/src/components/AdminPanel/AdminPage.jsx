@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './AdminPage.css'
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
  export const AdminPage = () => {
     const [username] = useState()
-    const [ setAdminData] = useState([]);
-    const [ setError] = useState('');
+    const [adminData, setAdminData] = useState([]);
+    const [error, setError] = useState('');
 
 
     useEffect(() => {
@@ -17,14 +19,14 @@ import './AdminPage.css'
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ad/', { 
+                const response = await fetch(`${apiUrl}/api/ad/`, { 
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error('Не удалось получить данные');
+                    throw new Error('Failed to retrieve data');
                 }
 
                 const data = await response.json();

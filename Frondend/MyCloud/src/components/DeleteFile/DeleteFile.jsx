@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 export const DeleteFileButton = ({ fileId, onDelete }) => {
     const handleDelete =  () => {
         const token = localStorage.getItem('token');
-        const url = `http://127.0.0.1:8000/api/file/${fileId}/`;
 
         try {
-            const response =  axios.delete(url, {
+            const response =  axios.delete(`${apiUrl}/api/file/${fileId}/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
