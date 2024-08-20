@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/OlegKumachev/DiplomMyCloud.git",
+  "homepage": "https://OlegKumachev.github.io/DiplomMyCloud/Frondend/MyCloud/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
