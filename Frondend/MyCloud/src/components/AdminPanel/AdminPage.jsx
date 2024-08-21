@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AdminPage.css'
 
@@ -6,8 +6,8 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 
  export const AdminPage = () => {
     const [username] = useState()
-    const [adminData, setAdminData] = useState([]);
-    const [error, setError] = useState('');
+    const [ setAdminData] = useState([]);
+    const [ setError] = useState('');
 
 
     useEffect(() => {

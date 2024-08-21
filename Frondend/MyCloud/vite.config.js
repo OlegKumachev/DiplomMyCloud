@@ -3,5 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/DiplomMyCloud/Frondend/MyCloud/'  // путь для GitHub Pages
-})
+  base: '/DiplomMyCloud/Frondend/',
+  build: {
+    outDir: 'dist'
+  }
+});
