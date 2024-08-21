@@ -1,6 +1,6 @@
 ﻿# Облачное хранилище My Cloud
 Веб-приложение, работает как облачное хранилище. Приложение позволяет пользователям отображать, загружать, отправлять, скачивать и переименовывать файлы.   
- 
+
 ## **Запуск**
 ## **Клонируем репозиторий.**
 ```bash
@@ -79,14 +79,17 @@ npm run dev
 ```
 ### **3.Структура проекта**
 
-`src/App.js`: Главный компонент приложения, определяющий маршрутизацию и основные компоненты.
-`src/components/LoginForm/LoginForm.js`: Компонент для логина.
-`src/components/LoginForm/RegisterPage.js`: Компонент для регистрации.
-`src/components/FilePage/FilesListPage.js`: Компонент для отображения списка файлов.
-`src/components/AdminPanel/AdminPage.js`: Компонент административной панели.
-`src/components/AdminPanel/AdminUsersList.js`: Компонент списка пользователей.
-`src/components/AdminPanel/AdminUserPage.js`: Компонент для просмотра данных конкретного пользователя.
-`src/components/AdminPanel/UserFilesPage.js`: Компонент для просмотра файлов пользователя.
+-`src/App.js`: Главный компонент приложения, определяющий маршрутизацию и основные компоненты.
+
+-`src/components/LoginForm/LoginForm.js`: Компонент для логина.
+
+-`src/components/LoginForm/RegisterPage.js`: Компонент для регистрации.
+-`src/components/FilePage/FilesListPage.js`: Компонент для отображения списка файлов.
+-`src/components/AdminPanel/AdminPage.js`: Компонент административной панели.
+-`src/components/AdminPanel/AdminUsersList.js`: Компонент списка пользователей.
+-`src/components/AdminPanel/AdminUserPage.js`: Компонент для просмотра данных конкретного пользователя.
+
+-`src/components/AdminPanel/UserFilesPage.js`: Компонент для просмотра файлов пользователя.
 
 ### **4. Взаимодействие с Backend**
 
