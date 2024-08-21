@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './Header.css';  // Импорт CSS файла
+import './Header.css';
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const Header = () => {
     const [username, setUsername] = useState(''); 
@@ -19,7 +21,7 @@ export const Header = () => {
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ad/me/', {
+                const response = await fetch(`${apiUrl}/api/ad/me/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
@@ -50,7 +52,7 @@ export const Header = () => {
         navigate('/login/');
     };
 
-    return (
+    return ( 
         <div className="header-container">
             <h1 className="headed-cloud">My Cloud</h1>
 

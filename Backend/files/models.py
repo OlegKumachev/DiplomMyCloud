@@ -1,9 +1,8 @@
 import os
 from uuid import uuid4
 from django.db import models
-from humanize import naturalsize
-
 from users.models import MyUser
+
 
 def user_directory_path(instance, filename):
     user_name = instance.user.username
@@ -47,11 +46,10 @@ class File(models.Model):
             self.user.save()
     def delete(self, *args, **kwargs):
         storage, path = self.file.storage, self.file.path
-        user = self.user  # Сохраните ссылку на пользователя перед удалением файла
+        user = self.user 
         super().delete(*args, **kwargs)
         storage.delete(path)
 
-    # Обновите total_size пользователя
         if user:
             user.update_total_size()
             user.save(update_fields=['total_size'])

@@ -4,8 +4,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',  // Применимо для React 17+
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -17,5 +17,9 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/react-in-jsx-scope': 'off', // Отключаем правило для React 17+
+    'no-unused-vars': 'warn', // Убираем ошибки о неиспользуемых переменных, можно настроить на 'error' по необходимости
+    'react/prop-types': 'warn', // Включаем предупреждения о пропсах, если используете PropTypes
+    'no-undef': 'error' // Ошибка о неопределенных переменных
   },
-}
+};

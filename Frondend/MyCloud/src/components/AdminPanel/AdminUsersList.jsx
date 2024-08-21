@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import humanize from 'humanize-plus';
 import './AdminUserList.css'
 
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 export const AdminUsersList = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
@@ -13,12 +16,12 @@ export const AdminUsersList = () => {
             const token = localStorage.getItem('token');
             if (!token) {
                 setError('Unauthorized');
-                navigate('/login'); // Перенаправляем на страницу входа
+                navigate('/login'); 
                 return;
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ad/', {
+                const response = await fetch(`${apiUrl}/api/ad/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
@@ -58,7 +61,7 @@ export const AdminUsersList = () => {
                 throw new Error('Failed to delete user');
             }
 
-            // Обновляем список пользователей после удаления
+            
             const updatedUsers = users.filter(user => user.id !== userId);
             setUsers(updatedUsers);
         } catch (err) {
@@ -88,7 +91,7 @@ export const AdminUsersList = () => {
                 throw new Error('Failed to update user status');
             }
 
-            // Обновляем статус пользователя в списке
+            
             const updatedUsers = users.map(user =>
                 user.id === userId ? { ...user, is_superuser: !isSuperuser, is_staff: !isSuperuser } : user
             );

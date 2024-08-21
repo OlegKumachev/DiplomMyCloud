@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';4
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
  export const PublicLink = ({ fileId }) => {
   const [copied, setCopied] = useState(false);
-  const url = `http://127.0.0.1:8000/api/download/${fileId}/liberty_link/`;
+  const url = `${apiUrl}api/download/${fileId}/liberty_link/`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(url);

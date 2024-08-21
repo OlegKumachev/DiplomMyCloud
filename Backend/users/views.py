@@ -1,5 +1,5 @@
 import logging
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from rest_framework import permissions, viewsets, status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -7,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.decorators import action
-from .models import MyUser
 from .serializers import UserSerializers, RegisterSerializer, LoginSerializer
+from .models import MyUser
 
 logger = logging.getLogger('main')
 
@@ -26,9 +26,6 @@ class MyUserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
     def me(self, request):
-        """
-        Returns the current authenticated user's data
-        """
         serializer = self.get_serializer(request.user)
         return Response(serializer.data)
 
@@ -39,14 +36,13 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            # Create tokens
+          
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
 
-            # Automatically log in the user
+           
             login(request, user)
 
-            # Return the response with tokens
             return Response({
                 "user_id": user.id,
                 "username": user.username,

@@ -1,4 +1,3 @@
-
 .header-container {
     position: fixed;
     left: 0;
@@ -42,16 +41,9 @@
 }
 
 
-.headed-cloud img {
-    width: 40px; 
-    height: 40px; 
-    margin-left: 10px; 
-}
-
-
 .user-info {
     display: flex; 
-    align-items: center; /
+    align-items: center; 
 }
 
 

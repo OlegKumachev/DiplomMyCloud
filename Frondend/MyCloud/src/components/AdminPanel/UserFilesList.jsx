@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import humanize from 'humanize-plus';
-import { PublicLink } from '../components/PublicLink/PublicLink';
-import { UpdateFile } from '../components/UpdateFile/UpdateFile';
-import { DeleteFileButton } from '../components/DeleteFile/DeleteFile';
-import { UpdateComment } from '../components/UpdateFile/UpdateComment'
+import { PublicLink } from '../PublicLink/PublicLink';
+import { UpdateFile } from '../UpdateFile/UpdateFile';
+import { DeleteFileButton } from '../DeleteFile/DeleteFile';
+import { UpdateComment } from '../UpdateFile/UpdateComment'
 import "./UserFilesList.css";
+
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const UserFilesPage = () => {
     const { userId } = useParams();
@@ -22,14 +24,14 @@ export const UserFilesPage = () => {
             }
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/file/user_files/${userId}/`, {
+                const response = await fetch(`${apiUrl}/api/file/user_files/${userId}/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error('Не удалось получить файлы');
+                    throw new Error('Failed to retrieve data');
                 }
 
                 const data = await response.json();
@@ -50,7 +52,7 @@ export const UserFilesPage = () => {
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/file/${fileId}/download/`, {
+            const response = await fetch(`${apiUrl}/api/file/${fileId}/download/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -74,7 +76,7 @@ export const UserFilesPage = () => {
         }
     };
 
-    const handleUpdate = (fileId, newName) => {
+    const handleUpdate = (fiuserIdleId, newName) => {
         setFiles(prevFiles =>
             prevFiles.map(file =>
                 file.id === fileId ? { ...file, original_name: newName } : file
@@ -95,14 +97,14 @@ export const UserFilesPage = () => {
     }
 
     return (
-    <div className="files-container">
-        <h1>Files for User {userId}</h1>
+    <div>
+        <h1>Файлы</h1>
         <table className="files-table">
             <thead>
                 <tr>
                     <th>Имя Файла</th>
                     <th>Размер</th>
-                    <th>Скачить</th>
+                    <th>Скачать</th>
                     <th>Обновить</th>
                     <th>Удалить</th>
                     <th>Поделиться</th>
